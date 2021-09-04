@@ -377,7 +377,16 @@ globalkeys = gears.table.join(
     --Volume
     awful.key({  }, "XF86AudioRaiseVolume", function() volume_widget:inc() end),
     awful.key({  }, "XF86AudioLowerVolume", function() volume_widget:dec() end),
-    awful.key({  }, "XF86AudioMute", function() volume_widget:toggle() end)
+    awful.key({  }, "XF86AudioMute", function() volume_widget:toggle() end),
+
+    -- Screenshot
+    awful.key({ modkey },            "y",     function () awful.util.spawn("flameshot gui") end,
+        {description = "Make a screenshot", group = "application"}),
+
+    -- Apps
+    awful.key({ modkey },            "c",     function () awful.util.spawn("code") end,
+        {description = "start VS Code", group = "application"})
+
 
       
 )
