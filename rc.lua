@@ -5,6 +5,8 @@ pcall(require, "luarocks.loader")
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
+-- multi monitor
+local xrandr = require("xrandr")
 require("awful.autofocus")
 -- Widget and layout library
 local wibox = require("wibox")
@@ -344,7 +346,12 @@ globalkeys = gears.table.join(
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+              {description = "show the menubar", group = "launcher"}),
+    -- Multi Monitor
+    awful.key({ modkey }, "g", function() xrandr.xrandr() end,
+              {description = "switch multi monitor setup", group = "monitor"})
+
+      
 )
 
 clientkeys = gears.table.join(
@@ -580,3 +587,5 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+
