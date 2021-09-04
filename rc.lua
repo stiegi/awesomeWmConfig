@@ -24,6 +24,8 @@ require("awful.hotkeys_popup.keys")
 local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
 
+local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -230,10 +232,16 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
+          --  mykeyboardlayout,
+
             wibox.widget.systray(),
+            volume_widget{
+                widget_type = 'arc',
+                mute_color = '#da270099'
+            },
             mytextclock,
-            s.mylayoutbox,
+            --s.mylayoutbox,
+
         },
     }
 end)
@@ -349,7 +357,12 @@ globalkeys = gears.table.join(
               {description = "show the menubar", group = "launcher"}),
     -- Multi Monitor
     awful.key({ modkey }, "g", function() xrandr.xrandr() end,
-              {description = "switch multi monitor setup", group = "monitor"})
+              {description = "switch multi monitor setup", group = "monitor"}),
+
+    --Volume
+    awful.key({  }, "XF86AudioRaiseVolume", function() volume_widget:inc() end),
+    awful.key({  }, "XF86AudioLowerVolume", function() volume_widget:dec() end),
+    awful.key({  }, "XF86AudioMute", function() volume_widget:toggle() end)
 
       
 )
@@ -587,5 +600,4 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
-
 
