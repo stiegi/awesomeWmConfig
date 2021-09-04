@@ -31,6 +31,53 @@ local ram_widget = require("awesome-wm-widgets.ram-widget.ram-widget")
 -- local docker_widget = require("awesome-wm-widgets.docker-widget.docker")
 -- local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
 
+local vicious = require("vicious")
+vicious.cache(vicious.widgets.cpu)
+
+  -- Initialize widget
+  cpuwidget1 = awful.widget.graph()
+  -- Graph properties
+  cpuwidget1:set_width(30)
+  cpuwidget1:set_height(30)
+  cpuwidget1:set_border_color("#222222")
+  cpuwidget1:set_background_color("#000000")
+  cpuwidget1:set_color({ type = "linear", from = { 75,0 }, to = { 75,30 }, stops = { {0, "#FF0000"}, {0.5, "#FFFF00"},
+                   {1, "#00FF00" }}})
+  -- Initialize widget
+  cpuwidget2 = awful.widget.graph()
+  -- Graph properties
+  cpuwidget2:set_width(30)
+  cpuwidget2:set_height(30)
+  cpuwidget2:set_border_color("#222222")
+  cpuwidget2:set_background_color("#000000")
+  cpuwidget2:set_color({ type = "linear", from = { 75,0 }, to = { 75,30 }, stops = { {0, "#FF0000"}, {0.5, "#FFFF00"},
+                   {1, "#00FF00" }}})
+  -- Initialize widget
+  cpuwidget3 = awful.widget.graph()
+  -- Graph properties
+  cpuwidget3:set_width(30)
+  cpuwidget3:set_height(30)
+  cpuwidget3:set_border_color("#222222")
+  cpuwidget3:set_background_color("#000000")
+  cpuwidget3:set_color({ type = "linear", from = { 75,0 }, to = { 75,30 }, stops = { {0, "#FF0000"}, {0.5, "#FFFF00"},
+                   {1, "#00FF00" }}})
+  -- Initialize widget
+  cpuwidget4 = awful.widget.graph()
+  -- Graph properties
+  cpuwidget4:set_width(30)
+  cpuwidget4:set_height(30)
+  cpuwidget4:set_border_color("#222222")
+  cpuwidget4:set_background_color("#000000")
+  cpuwidget4:set_color({ type = "linear", from = { 75,0 }, to = { 75,30 }, stops = { {0, "#FF0000"}, {0.5, "#FFFF00"},
+                   {1, "#00FF00" }}})
+                   
+
+  -- Register widget
+  vicious.register(cpuwidget1, vicious.widgets.cpu, "$2", 1)
+  vicious.register(cpuwidget2, vicious.widgets.cpu, "$3", 1)
+  vicious.register(cpuwidget3, vicious.widgets.cpu, "$4", 1)
+  vicious.register(cpuwidget4, vicious.widgets.cpu, "$5", 1)
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -247,6 +294,10 @@ awful.screen.connect_for_each_screen(function(s)
             -- cpu_widget(),
             -- docker_widget(),
             battery_widget(),
+            cpuwidget1,
+            cpuwidget2,
+            cpuwidget3,
+            cpuwidget4,
             ram_widget(),
             volume_widget{
                 widget_type = 'arc',
@@ -279,13 +330,13 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
 
-    awful.key({ modkey,           }, "j",
+    awful.key({ modkey,           }, "k",
         function ()
             awful.client.focus.byidx( 1)
         end,
         {description = "focus next by index", group = "client"}
     ),
-    awful.key({ modkey,           }, "k",
+    awful.key({ modkey,           }, "j",
         function ()
             awful.client.focus.byidx(-1)
         end,
@@ -315,7 +366,7 @@ globalkeys = gears.table.join(
         {description = "go back", group = "client"}),
 
     -- Standard program
-    awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
+    awful.key({ modkey,   "Control"        }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
     awful.key({           }, "Menu", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
@@ -385,7 +436,9 @@ globalkeys = gears.table.join(
 
     -- Apps
     awful.key({ modkey },            "c",     function () awful.util.spawn("code") end,
-        {description = "start VS Code", group = "application"})
+        {description = "start VS Code", group = "application"}),
+    awful.key({ modkey },            "v",     function () awful.util.spawn("google-chrome") end,
+        {description = "start Chrome", group = "application"})
 
 
       
@@ -402,7 +455,7 @@ clientkeys = gears.table.join(
               {description = "close", group = "client"}),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
-    awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
+    awful.key({ modkey }, "Return", function (c) c:swap(awful.client.getmaster()) end,
               {description = "move to master", group = "client"}),
     awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
               {description = "move to screen", group = "client"}),
@@ -621,8 +674,15 @@ end)
 --     c:emit_signal("request::activate", "mouse_enter", {raise = false})
 -- end)
 
-client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
-client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+client.connect_signal("focus", function(c) 
+    -- c.border_color = beautiful.border_focus 
+    c.border_color = "#919191"
+    c.border_width = 2
+end)
+client.connect_signal("unfocus", function(c) 
+    c.border_color = beautiful.border_normal
+    c.border_width = 0
+ end)
 -- }}}
 
 
