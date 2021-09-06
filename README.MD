@@ -15,3 +15,12 @@ git clone https://github.com/horst3180/arc-icon-theme --depth 1 && cd arc-icon-t
 sudo make install
 
 https://github.com/deficient/quicklaunch (remove line 43 in init)
+
+This in .bashrc (see https://unix.stackexchange.com/questions/327313/spawn-new-terminal-window-with-the-same-directory-as-the-previous-window):
+
+```bash
+function cd {
+  command cd "$1"
+  pwd > /tmp/terminal_pwd
+}
+```

@@ -383,8 +383,17 @@ globalkeys = gears.table.join(
     -- Standard program
     awful.key({ modkey,   "Control"        }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
-    awful.key({           }, "Menu", function () awful.spawn(terminal) end,
-              {description = "open a terminal", group = "launcher"}),
+    -- awful.key({           }, "Menu", function () awful.spawn(terminal) end,
+    --           {description = "open a terminal", group = "launcher"}),
+     -- Terminal with same path as before
+    awful.key({  }, 'Menu',
+    function()
+        awful.spawn.easy_async_with_shell(
+        "if [[ -s /tmp/terminal_pwd ]]; then cat /tmp/terminal_pwd; else echo '~'; fi",
+        function(path)
+            awful.spawn.easy_async_with_shell('alacritty --working-directory '..path, function() end)
+        end)
+    end),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
@@ -704,4 +713,6 @@ client.connect_signal("unfocus", function(c)
 
 -- Gaps
 -- beautiful.useless_gap = 5
+
+-- 
 
