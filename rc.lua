@@ -29,7 +29,7 @@ local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
 local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
 local ram_widget = require("awesome-wm-widgets.ram-widget.ram-widget")
 -- local docker_widget = require("awesome-wm-widgets.docker-widget.docker")
--- local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
+local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
 
 local vicious = require("vicious")
 vicious.cache(vicious.widgets.cpu)
@@ -77,6 +77,20 @@ vicious.cache(vicious.widgets.cpu)
   vicious.register(cpuwidget2, vicious.widgets.cpu, "$3", 1)
   vicious.register(cpuwidget3, vicious.widgets.cpu, "$4", 1)
   vicious.register(cpuwidget4, vicious.widgets.cpu, "$5", 1)
+
+  local quicklaunch = require("quicklaunch")
+
+
+-- create widget
+local launchbar = quicklaunch:bar {
+    { "Thunar",       "/home/sascha/.config/awesome/images/system-file-manager.png",       "thunar",         },
+    { "IntelliJ",       "/home/sascha/.config/awesome/images/idea.svg",       "/home/sascha/Programs/idea-IU-193.6494.35/bin/idea.sh %f",         },
+    { "Rocket Chat", "/home/sascha/.config/awesome/images/RocketChat_icon.png", "/opt/Rocket.Chat/rocketchat-desktop %U",   },
+    { "Firefox",       "/home/sascha/.config/awesome/images/ff.png",       "/opt/firefox/firefox",         },
+    { "Chrome",       "/home/sascha/.config/awesome/images/chrome.png",       "google-chrome",         },
+    { "HeidiSQL", "/home/sascha/.config/awesome/images/HeidiSQL_logo_image.png", "/usr/bin/wine /home/sascha/Programs/HeidiSQL/heidisql.exe",   },
+    { "WinSCP", "/home/sascha/.config/awesome/images/WinSCP_Logo.png", "/usr/bin/wine /home/sascha/Programs/WinSCP/WinSCP.exe",   }
+}
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -171,7 +185,7 @@ end
 
 
 -- mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
-mylauncher = awful.widget.launcher({ image = "/home/sascha/Pictures/heart.png",
+mylauncher = awful.widget.launcher({ image = "/home/sascha/.config/awesome/images/face-heart.png",
                                      menu = mymainmenu })
 
 -- Menubar configuration
@@ -244,7 +258,7 @@ awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     -- set_wallpaper(s)
     -- gears.wallpaper.set("#000000")
-    gears.wallpaper.maximized("/home/sascha/Pictures/knight_rider.jpg", s)
+    gears.wallpaper.maximized("/home/sascha/.config/awesome/images/knight_rider_1920.jpg", s)
 
     -- Each screen has its own tag table.
     awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
@@ -282,6 +296,7 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
             mylauncher,
+            launchbar,
             s.mytaglist,
             s.mypromptbox,
         },
@@ -435,9 +450,9 @@ globalkeys = gears.table.join(
         {description = "Make a screenshot", group = "application"}),
 
     -- Apps
-    awful.key({ modkey },            "c",     function () awful.util.spawn("code") end,
+    awful.key({ modkey },            "v",     function () awful.util.spawn("code") end,
         {description = "start VS Code", group = "application"}),
-    awful.key({ modkey },            "v",     function () awful.util.spawn("google-chrome") end,
+    awful.key({ modkey },            "c",     function () awful.util.spawn("google-chrome") end,
         {description = "start Chrome", group = "application"})
 
 
@@ -605,7 +620,7 @@ awful.rules.rules = {
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
-      }, properties = { titlebars_enabled = false }
+      }, properties = { titlebars_enabled = true }
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
@@ -676,15 +691,17 @@ end)
 
 client.connect_signal("focus", function(c) 
     -- c.border_color = beautiful.border_focus 
-    c.border_color = "#919191"
-    c.border_width = 2
+    c.border_color = "#ff5733"
+    c.border_width = 1
 end)
 client.connect_signal("unfocus", function(c) 
-    c.border_color = beautiful.border_normal
-    c.border_width = 0
+    -- c.border_color = beautiful.border_normal
+    c.border_color = "#cecece"
+    c.border_width = 1
  end)
 -- }}}
 
 
 -- Gaps
-beautiful.useless_gap = 5
+-- beautiful.useless_gap = 5
+
