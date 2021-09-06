@@ -92,6 +92,26 @@ local launchbar = quicklaunch:bar {
     { "WinSCP", "/home/sascha/.config/awesome/images/WinSCP_Logo.png", "/usr/bin/wine /home/sascha/Programs/WinSCP/WinSCP.exe",   }
 }
 
+-- vicous battery widget
+batwidget = wibox.widget.progressbar()
+
+-- Create wibox with batwidget
+batbox = wibox.layout.margin(
+    wibox.widget{ { max_value = 1, widget = batwidget,
+                    border_width = 0.5, border_color = "#000000",
+                    color = { type = "linear",
+                              from = { 0, 0 },
+                              to = { 0, 30 },
+                              stops = { { 0, "#AECF96" },
+                                        { 1, "#FF5656" } } } },
+                  forced_height = 10, forced_width = 8,
+                  direction = 'east', color = beautiful.fg_widget,
+                  layout = wibox.container.rotate },
+    1, 1, 3, 3)
+
+-- Register battery widget
+vicious.register(batwidget, vicious.widgets.bat, "$2", 61, "BAT0")
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -123,7 +143,7 @@ beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 --terminal = "x-terminal-emulator"
-terminal = "alacritty"
+terminal = "xfce4-terminal"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -308,7 +328,8 @@ awful.screen.connect_for_each_screen(function(s)
             wibox.widget.systray(),
             -- cpu_widget(),
             -- docker_widget(),
-            battery_widget(),
+            --battery_widget(),
+            batbox,
             cpuwidget1,
             cpuwidget2,
             cpuwidget3,
@@ -383,15 +404,15 @@ globalkeys = gears.table.join(
     -- Standard program
     awful.key({ modkey,   "Control"        }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
-    -- awful.key({           }, "Menu", function () awful.spawn(terminal) end,
-    --           {description = "open a terminal", group = "launcher"}),
+   --  awful.key({           }, "Menu", function () awful.spawn(terminal) end,
+     --          {description = "open a terminal", group = "launcher"}),
      -- Terminal with same path as before
     awful.key({  }, 'Menu',
     function()
-        awful.spawn.easy_async_with_shell(
+       awful.spawn.easy_async_with_shell(
         "if [[ -s /tmp/terminal_pwd ]]; then cat /tmp/terminal_pwd; else echo '~'; fi",
         function(path)
-            awful.spawn.easy_async_with_shell('alacritty --working-directory '..path, function() end)
+            awful.spawn.easy_async_with_shell('xfce4-terminal --working-directory '..path, function() end)
         end)
     end),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
