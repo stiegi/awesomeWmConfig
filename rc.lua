@@ -85,7 +85,7 @@ vicious.cache(vicious.widgets.cpu)
 local launchbar = quicklaunch:bar {
     { "Thunar",       "/home/sascha/.config/awesome/images/system-file-manager.png",       "thunar",         },
     { "IntelliJ",       "/home/sascha/.config/awesome/images/idea.svg",       "/home/sascha/Programs/idea-IU-193.6494.35/bin/idea.sh %f",         },
-    { "Rocket Chat", "/home/sascha/.config/awesome/images/RocketChat_icon.png", "/opt/Rocket.Chat/rocketchat-desktop %U",   },
+    { "Rocket Chat", "/home/sascha/.config/awesome/images/RocketChat_icon.png", "env BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/rocketchat-desktop_rocketchat-desktop.desktop /snap/bin/rocketchat-desktop %U",   },
     { "Firefox",       "/home/sascha/.config/awesome/images/ff.png",       "/opt/firefox/firefox",         },
     { "Chrome",       "/home/sascha/.config/awesome/images/chrome.png",       "google-chrome",         },
     { "HeidiSQL", "/home/sascha/.config/awesome/images/HeidiSQL_logo_image.png", "/usr/bin/wine /home/sascha/Programs/HeidiSQL/heidisql.exe",   },
@@ -417,7 +417,10 @@ globalkeys = gears.table.join(
               {description = "select next", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
               {description = "select previous", group = "layout"}),
-
+    awful.key({ modkey   }, "ü", function () awful.client.incwfact(0.05)                      end,
+              {description = "increase size vertically", group = "layout"}),
+    awful.key({ modkey   }, "ä", function () awful.client.incwfact(-0.05)                     end,
+              {description = "decrease size horizontally", group = "layout"}),
     awful.key({ modkey, "Control" }, "n",
               function ()
                   local c = awful.client.restore()
