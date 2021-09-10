@@ -85,11 +85,12 @@ vicious.cache(vicious.widgets.cpu)
 local launchbar = quicklaunch:bar {
     { "Thunar",       "/home/sascha/.config/awesome/images/system-file-manager.png",       "thunar",         },
     { "IntelliJ",       "/home/sascha/.config/awesome/images/idea.svg",       "/home/sascha/Programs/idea-IU-193.6494.35/bin/idea.sh %f",         },
-    { "Rocket Chat", "/home/sascha/.config/awesome/images/RocketChat_icon.png", "env BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/rocketchat-desktop_rocketchat-desktop.desktop /snap/bin/rocketchat-desktop %U",   },
+    { "Rocket Chat", "/home/sascha/.config/awesome/images/RocketChat_icon.png", "/usr/bin/rocketchat-desktop",   },
     { "Firefox",       "/home/sascha/.config/awesome/images/ff.png",       "/opt/firefox/firefox",         },
     { "Chrome",       "/home/sascha/.config/awesome/images/chrome.png",       "google-chrome",         },
     { "HeidiSQL", "/home/sascha/.config/awesome/images/HeidiSQL_logo_image.png", "/usr/bin/wine /home/sascha/Programs/HeidiSQL/heidisql.exe",   },
-    { "WinSCP", "/home/sascha/.config/awesome/images/WinSCP_Logo.png", "/usr/bin/wine /home/sascha/Programs/WinSCP/WinSCP.exe",   }
+    { "WinSCP", "/home/sascha/.config/awesome/images/WinSCP_Logo.png", "/usr/bin/wine /home/sascha/Programs/WinSCP/WinSCP.exe",   },
+    { "WinSCP", "/home/sascha/.config/awesome/images/gedit.png", "gedit",   }
 }
 
 
