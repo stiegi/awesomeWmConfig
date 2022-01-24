@@ -438,7 +438,8 @@ globalkeys = gears.table.join(
     -- Prompt
     awful.key({ modkey },            "r",     function () awful.util.spawn("dmenu_run") end,
               {description = "run dmenu", group = "launcher"}),
-
+               awful.key({ modkey },            "a",     function () awful.util.spawn("bash /home/sascha/.config/.apple-keyboard.sh") end,
+              {description = "apply apple keyboard keymap", group = "launcher"}),
     awful.key({ modkey }, "x",
               function ()
                   awful.prompt.run {
@@ -690,6 +691,7 @@ client.connect_signal("request::titlebars", function(c)
         },
         { -- Right
             awful.titlebar.widget.button(c, "changescreen", function() return "/home/sascha/.config/awesome/images/changescreen.png" end, function (c) c:move_to_screen() end),
+                        awful.titlebar.widget.button(c, "movetomaster", function() return "/home/sascha/.config/awesome/images/movetomaster.png" end, function (c) c:swap(awful.client.getmaster()) end),
             awful.titlebar.widget.floatingbutton (c),
             awful.titlebar.widget.maximizedbutton(c),
             awful.titlebar.widget.stickybutton   (c),
