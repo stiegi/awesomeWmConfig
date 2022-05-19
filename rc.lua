@@ -466,6 +466,10 @@ globalkeys = gears.table.join(
     awful.key({ modkey },            "y",     function () awful.util.spawn("flameshot gui") end,
         {description = "Make a screenshot", group = "application"}),
 
+    -- Switch to 2-monitor setup
+    awful.key({ },            "#169",     function () awful.util.spawn("bash /home/sascha/.config/awesome/monitor.sh") end,
+    {description = "Switch to 2 monitors", group = "monitor"}),
+
     -- Apps
     awful.key({ modkey },            "v",     function () awful.util.spawn("code") end,
         {description = "start VS Code", group = "application"}),
@@ -726,3 +730,4 @@ client.connect_signal("unfocus", function(c)
 
 -- 
 
+awful.util.spawn("bash /home/sascha/.config/awesome/monitor.sh")
