@@ -37,7 +37,7 @@ vicious.cache(vicious.widgets.cpu)
   -- Initialize widget
   cpuwidget1 = awful.widget.graph()
   -- Graph properties
-  cpuwidget1:set_width(30)
+  cpuwidget1:set_width(10)
   cpuwidget1:set_height(30)
   cpuwidget1:set_border_color("#222222")
   cpuwidget1:set_background_color("#000000")
@@ -46,7 +46,7 @@ vicious.cache(vicious.widgets.cpu)
   -- Initialize widget
   cpuwidget2 = awful.widget.graph()
   -- Graph properties
-  cpuwidget2:set_width(30)
+  cpuwidget2:set_width(10)
   cpuwidget2:set_height(30)
   cpuwidget2:set_border_color("#222222")
   cpuwidget2:set_background_color("#000000")
@@ -55,7 +55,7 @@ vicious.cache(vicious.widgets.cpu)
   -- Initialize widget
   cpuwidget3 = awful.widget.graph()
   -- Graph properties
-  cpuwidget3:set_width(30)
+  cpuwidget3:set_width(10)
   cpuwidget3:set_height(30)
   cpuwidget3:set_border_color("#222222")
   cpuwidget3:set_background_color("#000000")
@@ -64,12 +64,86 @@ vicious.cache(vicious.widgets.cpu)
   -- Initialize widget
   cpuwidget4 = awful.widget.graph()
   -- Graph properties
-  cpuwidget4:set_width(30)
+  cpuwidget4:set_width(10)
   cpuwidget4:set_height(30)
   cpuwidget4:set_border_color("#222222")
   cpuwidget4:set_background_color("#000000")
   cpuwidget4:set_color({ type = "linear", from = { 75,0 }, to = { 75,30 }, stops = { {0, "#FF0000"}, {0.5, "#FFFF00"},
                    {1, "#00FF00" }}})
+  -- Initialize widget
+  cpuwidget5 = awful.widget.graph()
+  -- Graph properties
+  cpuwidget5:set_width(10)
+  cpuwidget5:set_height(30)
+  cpuwidget5:set_border_color("#222222")
+  cpuwidget5:set_background_color("#000000")
+  cpuwidget5:set_color({ type = "linear", from = { 75,0 }, to = { 75,30 }, stops = { {0, "#FF0000"}, {0.5, "#FFFF00"},
+                   {1, "#00FF00" }}})
+  -- Initialize widget
+  cpuwidget6 = awful.widget.graph()
+  -- Graph properties
+  cpuwidget6:set_width(10)
+  cpuwidget6:set_height(30)
+  cpuwidget6:set_border_color("#222222")
+  cpuwidget6:set_background_color("#000000")
+  cpuwidget6:set_color({ type = "linear", from = { 75,0 }, to = { 75,30 }, stops = { {0, "#FF0000"}, {0.5, "#FFFF00"},
+                   {1, "#00FF00" }}})
+  -- Initialize widget
+  cpuwidget7 = awful.widget.graph()
+  -- Graph properties
+  cpuwidget7:set_width(10)
+  cpuwidget7:set_height(30)
+  cpuwidget7:set_border_color("#222222")
+  cpuwidget7:set_background_color("#000000")
+  cpuwidget7:set_color({ type = "linear", from = { 75,0 }, to = { 75,30 }, stops = { {0, "#FF0000"}, {0.5, "#FFFF00"},
+                   {1, "#00FF00" }}})
+  -- Initialize widget
+  cpuwidget8 = awful.widget.graph()
+  -- Graph properties
+  cpuwidget8:set_width(10)
+  cpuwidget8:set_height(30)
+  cpuwidget8:set_border_color("#222222")
+  cpuwidget8:set_background_color("#000000")
+  cpuwidget8:set_color({ type = "linear", from = { 75,0 }, to = { 75,30 }, stops = { {0, "#FF0000"}, {0.5, "#FFFF00"},
+                   {1, "#00FF00" }}})
+  -- Initialize widget
+  cpuwidget9 = awful.widget.graph()
+  -- Graph properties
+  cpuwidget9:set_width(10)
+  cpuwidget9:set_height(30)
+  cpuwidget9:set_border_color("#222222")
+  cpuwidget9:set_background_color("#000000")
+  cpuwidget9:set_color({ type = "linear", from = { 75,0 }, to = { 75,30 }, stops = { {0, "#FF0000"}, {0.5, "#FFFF00"},
+                   {1, "#00FF00" }}})
+  -- Initialize widget
+  cpuwidget10 = awful.widget.graph()
+  -- Graph properties
+  cpuwidget10:set_width(10)
+  cpuwidget10:set_height(30)
+  cpuwidget10:set_border_color("#222222")
+  cpuwidget10:set_background_color("#000000")
+  cpuwidget10:set_color({ type = "linear", from = { 75,0 }, to = { 75,30 }, stops = { {0, "#FF0000"}, {0.5, "#FFFF00"},
+                   {1, "#00FF00" }}})
+  -- Initialize widget
+  cpuwidget11 = awful.widget.graph()
+  -- Graph properties
+  cpuwidget11:set_width(10)
+  cpuwidget11:set_height(30)
+  cpuwidget11:set_border_color("#222222")
+  cpuwidget11:set_background_color("#000000")
+  cpuwidget11:set_color({ type = "linear", from = { 75,0 }, to = { 75,30 }, stops = { {0, "#FF0000"}, {0.5, "#FFFF00"},
+                   {1, "#00FF00" }}})
+  -- Initialize widget
+  cpuwidget12 = awful.widget.graph()
+  -- Graph properties
+  cpuwidget12:set_width(10)
+  cpuwidget12:set_height(30)
+  cpuwidget12:set_border_color("#222222")
+  cpuwidget12:set_background_color("#000000")
+  cpuwidget12:set_color({ type = "linear", from = { 75,0 }, to = { 75,30 }, stops = { {0, "#FF0000"}, {0.5, "#FFFF00"},
+                   {1, "#00FF00" }}})
+
+
                    
 
   -- Register widget
@@ -77,6 +151,14 @@ vicious.cache(vicious.widgets.cpu)
   vicious.register(cpuwidget2, vicious.widgets.cpu, "$3", 1)
   vicious.register(cpuwidget3, vicious.widgets.cpu, "$4", 1)
   vicious.register(cpuwidget4, vicious.widgets.cpu, "$5", 1)
+  vicious.register(cpuwidget5, vicious.widgets.cpu, "$6", 1)
+  vicious.register(cpuwidget6, vicious.widgets.cpu, "$7", 1)
+  vicious.register(cpuwidget7, vicious.widgets.cpu, "$8", 1)
+  vicious.register(cpuwidget8, vicious.widgets.cpu, "$9", 1)
+  vicious.register(cpuwidget9, vicious.widgets.cpu, "$10", 1)
+  vicious.register(cpuwidget10, vicious.widgets.cpu, "$11", 1)
+  vicious.register(cpuwidget11, vicious.widgets.cpu, "$12", 1)
+  vicious.register(cpuwidget12, vicious.widgets.cpu, "$13", 1)
 
   local quicklaunch = require("quicklaunch")
 
@@ -317,6 +399,14 @@ awful.screen.connect_for_each_screen(function(s)
             cpuwidget2,
             cpuwidget3,
             cpuwidget4,
+            cpuwidget5,
+            cpuwidget6,
+            cpuwidget7,
+            cpuwidget8,
+            cpuwidget9,
+            cpuwidget10,
+            cpuwidget11,
+            cpuwidget12,
             ram_widget(),
             volume_widget{
                 widget_type = 'arc',
@@ -731,3 +821,4 @@ client.connect_signal("unfocus", function(c)
 -- 
 
 awful.util.spawn("bash /home/sascha/.config/awesome/monitor.sh")
+awful.util.spawn("xfce4-power-manager")
