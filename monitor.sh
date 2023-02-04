@@ -1,5 +1,5 @@
 
 # Check if HDMI Monitor is connected, place him right of native screen
-if xrandr | grep -q 'HDMI1 connected'; then
-	xrandr --output HDMI1 --right-of eDP1 --auto
+if xrandr | grep -q 'HDMI-A-0 connected'; then
+	xrandr --output HDMI-A-0 --right-of eDP --auto
 fi

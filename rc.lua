@@ -25,7 +25,7 @@ local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
 
 -- Awesome widgets
-local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
+-- local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
 local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
 local ram_widget = require("awesome-wm-widgets.ram-widget.ram-widget")
 -- local docker_widget = require("awesome-wm-widgets.docker-widget.docker")
@@ -109,13 +109,13 @@ vicious.cache(vicious.widgets.cpu)
   -- Initialize widget
   cpuwidget9 = awful.widget.graph()
   -- Graph properties
-  cpuwidget9:set_width(10)
+  cpuwidget9:set_width(30)
   cpuwidget9:set_height(30)
   cpuwidget9:set_border_color("#222222")
-  cpuwidget9:set_background_color("#000000")
+  cpuwidget9:set_background_color("#484848")
   cpuwidget9:set_color({ type = "linear", from = { 75,0 }, to = { 75,30 }, stops = { {0, "#FF0000"}, {0.5, "#FFFF00"},
                    {1, "#00FF00" }}})
-  -- Initialize widget
+-- Initialize widget
   cpuwidget10 = awful.widget.graph()
   -- Graph properties
   cpuwidget10:set_width(10)
@@ -124,26 +124,6 @@ vicious.cache(vicious.widgets.cpu)
   cpuwidget10:set_background_color("#000000")
   cpuwidget10:set_color({ type = "linear", from = { 75,0 }, to = { 75,30 }, stops = { {0, "#FF0000"}, {0.5, "#FFFF00"},
                    {1, "#00FF00" }}})
-  -- Initialize widget
-  cpuwidget11 = awful.widget.graph()
-  -- Graph properties
-  cpuwidget11:set_width(10)
-  cpuwidget11:set_height(30)
-  cpuwidget11:set_border_color("#222222")
-  cpuwidget11:set_background_color("#000000")
-  cpuwidget11:set_color({ type = "linear", from = { 75,0 }, to = { 75,30 }, stops = { {0, "#FF0000"}, {0.5, "#FFFF00"},
-                   {1, "#00FF00" }}})
-  -- Initialize widget
-  cpuwidget12 = awful.widget.graph()
-  -- Graph properties
-  cpuwidget12:set_width(10)
-  cpuwidget12:set_height(30)
-  cpuwidget12:set_border_color("#222222")
-  cpuwidget12:set_background_color("#000000")
-  cpuwidget12:set_color({ type = "linear", from = { 75,0 }, to = { 75,30 }, stops = { {0, "#FF0000"}, {0.5, "#FFFF00"},
-                   {1, "#00FF00" }}})
-
-
                    
 
   -- Register widget
@@ -155,24 +135,22 @@ vicious.cache(vicious.widgets.cpu)
   vicious.register(cpuwidget6, vicious.widgets.cpu, "$7", 1)
   vicious.register(cpuwidget7, vicious.widgets.cpu, "$8", 1)
   vicious.register(cpuwidget8, vicious.widgets.cpu, "$9", 1)
-  vicious.register(cpuwidget9, vicious.widgets.cpu, "$10", 1)
-  vicious.register(cpuwidget10, vicious.widgets.cpu, "$11", 1)
-  vicious.register(cpuwidget11, vicious.widgets.cpu, "$12", 1)
-  vicious.register(cpuwidget12, vicious.widgets.cpu, "$13", 1)
-
+  vicious.register(cpuwidget9, vicious.widgets.cpu, "$1", 1)
+  vicious.register(cpuwidget10, vicious.widgets.cpu, "$10", 1)
   local quicklaunch = require("quicklaunch")
 
 
 -- create widget
 local launchbar = quicklaunch:bar {
-    { "Thunar",       "/home/sascha/.config/awesome/images/system-file-manager.png",       "thunar",         },
-    { "IntelliJ",       "/home/sascha/.config/awesome/images/idea.svg",       "/home/sascha/Programs/idea-IU-193.6494.35/bin/idea.sh %f",         },
+    { "Thunar",       "/home/sascha/.config/awesome/images/system-file-manager.png",       "thunar /home/sascha/Development",         },
+    { "IntelliJ",       "/home/sascha/.config/awesome/images/idea.svg",       "/home/sascha/.local/share/JetBrains/Toolbox/apps/IDEA-U/ch-0/222.4167.29/bin/idea.sh %f",         },
     { "Visual Studio Code", "/home/sascha/.config/awesome/images/vs-code.png", "code",   },
-    { "Rocket Chat", "/home/sascha/.config/awesome/images/RocketChat_icon.png", "/usr/bin/rocketchat-desktop",   },
+    { "Rocket Chat", "/home/sascha/.config/awesome/images/RocketChat_icon.png", "/home/sascha/Programs/rocketchat/rocketchat-desktop",   },
     { "Firefox",       "/home/sascha/.config/awesome/images/ff.png",       "/opt/firefox/firefox",         },
     { "Chrome",       "/home/sascha/.config/awesome/images/chrome.png",       "google-chrome",         },
-    { "HeidiSQL", "/home/sascha/.config/awesome/images/HeidiSQL_logo_image.png", "/usr/bin/wine /home/sascha/Programs/HeidiSQL/heidisql.exe",   },
-    { "WinSCP", "/home/sascha/.config/awesome/images/WinSCP_Logo.png", "/usr/bin/wine /home/sascha/Programs/WinSCP/WinSCP.exe",   },
+    { "HeidiSQL", "/home/sascha/.config/awesome/images/HeidiSQL_logo_image.png", "/home/sascha/Programs/Linux_MeowSQL_0.4.16-x86_64.AppImage",   },
+    { "WinSCP", "/home/sascha/.config/awesome/images/WinSCP_Logo.png", "/home/sascha/Programs/FileZilla3/bin/filezilla",   },
+    { "AntimicroX", "/home/sascha/.config/awesome/images/wiimote.png", "antimicrox",   },
     { "Gedit", "/home/sascha/.config/awesome/images/gedit.png", "gedit",   }
 }
 
@@ -223,13 +201,13 @@ modkey = "Mod4"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
     --awful.layout.suit.floating,
-    awful.layout.suit.tile,
+    --awful.layout.suit.tile,
     --awful.layout.suit.tile.left,
     --awful.layout.suit.tile.bottom,
     --awful.layout.suit.tile.top,
     --awful.layout.suit.fair,
     --awful.layout.suit.fair.horizontal,
-    --awful.layout.suit.spiral,
+    awful.layout.suit.spiral
     --awful.layout.suit.spiral.dwindle,
     --awful.layout.suit.max,
     --awful.layout.suit.max.fullscreen,
@@ -237,7 +215,7 @@ awful.layout.layouts = {
     --awful.layout.suit.corner.nw,
     -- awful.layout.suit.corner.ne,
     -- awful.layout.suit.corner.sw,
-    -- awful.layout.suit.corner.se,
+    --awful.layout.suit.corner.se
 }
 -- }}}
 
@@ -316,7 +294,7 @@ local tasklist_buttons = gears.table.join(
                                               end
                                           end),
                      awful.button({ }, 3, function()
-                                              awful.menu.client_list({ theme = { width = 250 } })
+                                            --   awful.menu.client_list({ theme = { width = 250 } })
                                           end),
                      awful.button({ }, 4, function ()
                                               awful.client.focus.byidx(1)
@@ -394,7 +372,8 @@ awful.screen.connect_for_each_screen(function(s)
             wibox.widget.systray(),
             -- cpu_widget(),
             -- docker_widget(),
-            battery_widget(),
+            -- battery_widget(),
+            cpuwidget9,
             cpuwidget1,
             cpuwidget2,
             cpuwidget3,
@@ -403,10 +382,7 @@ awful.screen.connect_for_each_screen(function(s)
             cpuwidget6,
             cpuwidget7,
             cpuwidget8,
-            cpuwidget9,
             cpuwidget10,
-            cpuwidget11,
-            cpuwidget12,
             ram_widget(),
             volume_widget{
                 widget_type = 'arc',
@@ -422,7 +398,7 @@ end)
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
+    -- awful.button({ }, 3, function () mymainmenu:toggle() end),
     awful.button({ }, 4, awful.tag.viewnext),
     awful.button({ }, 5, awful.tag.viewprev)
 ))
@@ -455,6 +431,20 @@ globalkeys = gears.table.join(
               {description = "show main menu", group = "awesome"}),
 
     -- Layout manipulation
+    awful.key({ modkey }, "x", function ()
+        local screen = awful.screen.focused()
+        local tag = screen.tags[1]
+        if tag then
+          awful.tag.viewtoggle(tag)
+        end
+        tag = screen.tags[2]
+        if tag then
+          awful.tag.viewtoggle(tag)
+        end
+      end,
+      {description = "switch back and forth between tag 1 and 2", group = "tag"}),
+
+
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
               {description = "swap with next client by index", group = "client"}),
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end,
@@ -530,16 +520,16 @@ globalkeys = gears.table.join(
               {description = "run dmenu", group = "launcher"}),
                awful.key({ modkey },            "a",     function () awful.util.spawn("bash /home/sascha/.config/.apple-keyboard.sh") end,
               {description = "apply apple keyboard keymap", group = "launcher"}),
-    awful.key({ modkey }, "x",
-              function ()
-                  awful.prompt.run {
-                    prompt       = "Run Lua code: ",
-                    textbox      = awful.screen.focused().mypromptbox.widget,
-                    exe_callback = awful.util.eval,
-                    history_path = awful.util.get_cache_dir() .. "/history_eval"
-                  }
-              end,
-              {description = "lua execute prompt", group = "awesome"}),
+    -- awful.key({ modkey }, "x",
+    --           function ()
+    --               awful.prompt.run {
+    --                 prompt       = "Run Lua code: ",
+    --                 textbox      = awful.screen.focused().mypromptbox.widget,
+    --                 exe_callback = awful.util.eval,
+    --                 history_path = awful.util.get_cache_dir() .. "/history_eval"
+    --               }
+    --           end,
+    --           {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"}),
