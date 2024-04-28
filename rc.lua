@@ -145,7 +145,7 @@ local launchbar = quicklaunch:bar {
     { "Thunar",       "/home/sascha/.config/awesome/images/system-file-manager.png",       "thunar /home/sascha/Development",         },
     { "IntelliJ",       "/home/sascha/.config/awesome/images/idea.svg",       "/home/sascha/.local/share/JetBrains/Toolbox/apps/IDEA-U/ch-0/222.4167.29/bin/idea.sh %f",         },
     { "Visual Studio Code", "/home/sascha/.config/awesome/images/vs-code.png", "code",   },
-    { "Rocket Chat", "/home/sascha/.config/awesome/images/RocketChat_icon.png", "/home/sascha/Programs/rocketchat/rocketchat-desktop",   },
+    { "Slack", "/home/sascha/.config/awesome/images/slack.svg", "/usr/bin/slack",   },
     { "Firefox",       "/home/sascha/.config/awesome/images/ff.png",       "/opt/firefox/firefox",         },
     { "Chrome",       "/home/sascha/.config/awesome/images/chrome.png",       "google-chrome",         },
     { "HeidiSQL", "/home/sascha/.config/awesome/images/HeidiSQL_logo_image.png", "/home/sascha/Programs/Linux_MeowSQL_0.4.16-x86_64.AppImage",   },
