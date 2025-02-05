@@ -351,8 +351,41 @@ awful.screen.connect_for_each_screen(function(s)
         buttons = tasklist_buttons
     }
 
+    -- Timer to auto-hide the wibox
+    local hide_timer = gears.timer {
+        timeout = 5, -- time in seconds before auto-hiding
+        autostart = false,
+        callback = function()
+            if s.mywibox.visible then
+                s.mywibox.visible = false
+            end
+        end
+    }
+
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "bottom", screen = s })
+
+    -- Show the wibox when the mouse is near the bottom of the screen
+    local activator = wibox {
+        visible = true,
+        ontop = true,
+        bg = "#00000000", -- transparent
+        type = "dock",
+        height = 1,
+        width = s.geometry.width,
+        x = 0,
+        y = s.geometry.height - 1, -- position at the bottom of the screen
+        screen = s
+    }
+
+    activator:connect_signal("mouse::enter", function()
+        s.mywibox.visible = true
+        hide_timer:stop()
+    end)
+    
+    s.mywibox:connect_signal("mouse::leave", function()
+        hide_timer:start()
+    end)
 
     -- Add widgets to the wibox
     s.mywibox:setup {
