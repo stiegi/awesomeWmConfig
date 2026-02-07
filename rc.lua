@@ -143,13 +143,11 @@ vicious.cache(vicious.widgets.cpu)
 -- create widget
 local launchbar = quicklaunch:bar {
     { "Thunar",       "/home/sascha/.config/awesome/images/system-file-manager.png",       "thunar /home/sascha/Development",         },
-    { "IntelliJ",       "/home/sascha/.config/awesome/images/idea.svg",       "/home/sascha/Programs/IntelliJ/bin/idea.sh %f",         },
     { "Visual Studio Code", "/home/sascha/.config/awesome/images/vs-code.png", "code",   },
-    { "Slack", "/home/sascha/.config/awesome/images/slack.svg", "/usr/bin/slack",   },
     { "Firefox",       "/home/sascha/.config/awesome/images/ff.png",       "/opt/firefox/firefox",         },
     { "Chrome",       "/home/sascha/.config/awesome/images/chrome.png",       "google-chrome",         },
     { "HeidiSQL", "/home/sascha/.config/awesome/images/HeidiSQL_logo_image.png", "/home/sascha/Programs/Linux_MeowSQL_0.4.18-x86_64.AppImage",   },
-    { "WinSCP", "/home/sascha/.config/awesome/images/WinSCP_Logo.png", "/home/sascha/Programs/FileZilla3/bin/filezilla",   },
+    { "FileZilla", "/home/sascha/.config/awesome/images/filezilla.png", "/home/sascha/Programs/FileZilla3/bin/filezilla",   },
     { "AntimicroX", "/home/sascha/.config/awesome/images/wiimote.png", "antimicrox",   },
     { "Gedit", "/home/sascha/.config/awesome/images/gedit.png", "gedit",   },
 }
@@ -319,10 +317,11 @@ end
 screen.connect_signal("property::geometry", set_wallpaper)
 
 awful.screen.connect_for_each_screen(function(s)
+    s.mywibox = nil 
     -- Wallpaper
     -- set_wallpaper(s)
-    -- gears.wallpaper.set("#000000")
-    gears.wallpaper.maximized("/home/sascha/.config/awesome/images/knight_rider_1920.jpg", s)
+    gears.wallpaper.set("#000000")
+    --gears.wallpaper.maximized("/home/sascha/.config/awesome/images/blackpixel.png", s)
 
     -- Each screen has its own tag table.
     awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
@@ -827,7 +826,7 @@ end)
 
 client.connect_signal("focus", function(c) 
     -- c.border_color = beautiful.border_focus 
-    c.border_color = "#ff5733"
+    c.border_color = "#000"
     c.border_width = 1
 end)
 client.connect_signal("unfocus", function(c) 
